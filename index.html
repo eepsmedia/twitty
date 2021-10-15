@@ -37,7 +37,15 @@ limitations under the License.
 
     <script src="src/twitty.js"></script>
     <script src="src/Tweet.js"></script>
+    <script src="src/codapConnect.js"></script>
+    <script src="strings/strings.js"></script>
     <script src="data/med-tweets.js"></script>
+
+    <!-- These scripts take care of the communication with CODAP  -->
+    <script src="../common/iframe-phone.js"></script>
+    <script src="../common/codap_helper_newAPI.js"></script>
+    <script src="../common/codapInterface.js"></script>
+    <script src="../common/pluginHelper.js"></script>
 
 </head>
 <body>
@@ -46,13 +54,14 @@ limitations under the License.
 
 <label for="startDateInput" id="startDateInputLabel">start: </label>
 <input type="date" id="startDateInput"
-min="2020-03-01" max="2021-04-30" value="2020-05-01">
+       min="2020-03-01" max="2021-04-30" value="2020-05-01">
 
 <label for="endDateInput" id="endDateInputLabel">end: </label>
 <input type="date" id="endDateInput"
        min="2020-03-01" max="2021-04-30" value="2020-05-08">
 
 <button id="actionButton" onclick="twitty.handleActionButton()">action!</button>
+<button id="emitButton" onclick="twitty.handleEmitButton()">emit data!</button>
 
 <div id="foundTweetList"></div>
 <textarea id="selectedTweet"></textarea>
