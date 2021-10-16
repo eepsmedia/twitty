@@ -62,6 +62,7 @@ codapConnect = {
                 what : t.what,
                 when : t.when,
                 likes : Number(t.likes),
+                retweets: Number(t.retweets)
             }
             theValues.push(aValue);
         });
@@ -123,6 +124,12 @@ codapConnect = {
                             title: twitty.strings.sanLikes,
                             type: 'numeric',
                             description: twitty.strings.saLikesDescription
+                        },
+                        {
+                            name: twitty.strings.sanRetweets,
+                            title: twitty.strings.sanRetweets,
+                            type: 'numeric',
+                            description: twitty.strings.saRetweetsDescription
                         },
                         {
                             name: twitty.strings.sanWhat,

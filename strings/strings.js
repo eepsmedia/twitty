@@ -43,6 +43,8 @@ strings = {
         saLikesDescription : "how many likes",
         sanWhat : "what",
         saWhatDescription : "the text of the tweet",
+        sanRetweets : "retweets",
+        saRetweetsDescription : "how many retweets",
     },
 
 }
