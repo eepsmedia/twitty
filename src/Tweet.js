@@ -35,6 +35,10 @@ class Tweet {
         this.likes = iTweet.likeCount;
         this.id = iTweet.id;
         this.lang = iTweet.lang;
+        this.followers = iTweet.user.followersCount;
+        this.retweet = iTweet.user.retweetCount;
+        this.username = iTweet.user.username;
+        this.url = iTweet.url
     };
 
     toString() {

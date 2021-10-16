@@ -40,3 +40,12 @@ textarea {
     background-color: lightblue;
     margin-top: 1em;
 }
+
+ul {
+    columns: 3;
+    -webkit-columns: 3;
+    -moz-columns: 3;
+}
+#selectedTweetInfo{
+    white-space: pre-wrap;
+}
