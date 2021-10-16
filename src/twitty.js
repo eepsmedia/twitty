@@ -30,8 +30,9 @@ const twitty = {
 
     allTweets : [],
     currentTweets : null,
+    strings : null,
 
-    initialize: function () {
+    initialize: async function () {
         // define all the foul words
         foulWords = ["anal","arse","bastard","bitch", "anus", "ballsack", "blowjob", "blow job","boner","clitoris","cock","cunt","dick","dildo","dyke","fag","fuck","jizz","labia","muff",
             "nigger","nigga","dickhead","prick","penis","piss","pussy","scrotum","sex","shit","slut","smegma","spunk","twat","vagina","wank","whore"]
@@ -52,6 +53,8 @@ const twitty = {
             }
         });
         console.log(`read in ${this.allTweets.length} tweets`);
+        this.strings = await strings.initializeStrings();     //  defaults to English
+        codapConnect.initialize();
     },
 
     handleActionButton: function () {
@@ -64,22 +67,36 @@ const twitty = {
 
         //  filter the tweets by date & keyword
         this.currentTweets = [];    //  empty the `currentTweets` array
-        let listGuts = "";
         this.allTweets.forEach( (t) => {
             tweetContent = t.what.toString().toLowerCase();
             if (t.when >= this.state.startDate && t.when <= this.state.endDate && tweetContent.includes(theWord)) {
                 this.currentTweets.push(t);
                 const theText = t.what;
-                listGuts += `<li onclick="twitty.displayOneTweet(${t.id})">${theText.slice(0,19)}...</li>`;
             }
         });
 
-        currentTweetList = document.getElementById("foundTweetList");
-        currentTweetList.innerHTML = `<p>Click on the text below...</p><ul>${listGuts}</ul>`;
+        this.displayCurrentTweets();
 
         console.log(`Found ${this.currentTweets.length} tweets. The first is 
         ${this.currentTweets[0]}`);
 
+    },
+
+    displayCurrentTweets : function() {
+        let listGuts = "";
+        currentTweetList = document.getElementById("foundTweetList");
+        this.currentTweets.forEach( tw => {
+            const theText = tw.what;
+            listGuts += `<li onclick="twitty.displayOneTweet(${tw.id})">${theText.slice(0,19)}...</li>`;
+
+        })
+        currentTweetList.innerHTML = `<p>Click on the text below to see the whole tweet...</p><ul>${listGuts}</ul>`;
+    },
+
+    handleEmitButton : function() {
+        if (this.currentTweets) {
+            codapConnect.emitTweets(this.currentTweets);
+        }
     },
 
     displayOneTweet : function(id) {
@@ -99,12 +116,32 @@ const twitty = {
         }
     },
 
+    setSelectedSet : function(iTweetIDs) {
+        this.currentTweets = [];
+        this.allTweets.forEach( tw => {
+            if (iTweetIDs.includes(tw.id)) {
+                this.currentTweets.push(tw);
+            }
+        })
+        this.displayCurrentTweets();
+
+        if (this.currentTweets.length === 1) {
+            this.displayOneTweet(this.currentTweets[0].id);
+        }
+    },
+
     state: {
         startDate: null,
         endDate: null,
     },
 
     constants: {
-        version: "000a",
+        version: "000b",
+        pluginName : "twitty",
+        dimensions : {
+            height : 300,
+            width : 400,
+        },
+        kTweetsDatasetName : "tweets",
     }
 }

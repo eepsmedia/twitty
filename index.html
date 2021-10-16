@@ -27,6 +27,10 @@ distributed under the License is distributed on an "AS IS" BASIS,
 limitations under the License.
 ==========================================================================
 
+
+local with local twitty: http://localhost/codap/static/dg/en/cert/index.html?di=http://localhost/ids/twitty/
+concord codap, twitty from codap.xyz:
+    https://codap.concord.org/releases/latest/static/dg/en/cert/index.html?di=https://codap.xyz/ids/twitty/
 -->
 
 <head>
@@ -37,12 +41,20 @@ limitations under the License.
 
     <script src="src/twitty.js"></script>
     <script src="src/Tweet.js"></script>
+    <script src="src/codapConnect.js"></script>
+    <script src="strings/strings.js"></script>
     <script src="data/med-tweets.js"></script>
+
+    <!-- These scripts take care of the communication with CODAP  -->
+    <script src="../common/iframe-phone.js"></script>
+    <script src="../common/codap_helper_newAPI.js"></script>
+    <script src="../common/codapInterface.js"></script>
+    <script src="../common/pluginHelper.js"></script>
 
 </head>
 <body>
 <h2>twitty</h2>
-<p style="color:fuchsia;"><strong>A CODAP plugin for getting tweets for analysis</strong></p>
+<p>A CODAP plugin for getting tweets for analysis</p>
 
 <label for="startDateInput" id="startDateInputLabel">start: </label>
 <input type="date" id="startDateInput"
@@ -54,6 +66,8 @@ min="2020-03-01" max="2021-04-30" value="2020-05-01">
 <input type="date" id="endDateInput"
        min="2020-03-01" max="2021-04-30" value="2020-05-08">
 
+<button id="actionButton" onclick="twitty.handleActionButton()">action!</button>
+<button id="emitButton" onclick="twitty.handleEmitButton()">emit data!</button>
 <br>
 <br>
 <label for="wordfilter" id="wordfilterlabel">Key Word:</label>
