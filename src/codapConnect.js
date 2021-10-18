@@ -62,7 +62,11 @@ codapConnect = {
                 what : t.what,
                 when : t.when,
                 likes : Number(t.likes),
-                retweets: Number(t.retweets)
+                retweets: Number(t.retweets),
+                followers: Number(t.followers),
+                username: t.username,
+                location: t.where,
+                url : t.url
             }
             theValues.push(aValue);
         });
@@ -132,12 +136,35 @@ codapConnect = {
                             description: twitty.strings.saRetweetsDescription
                         },
                         {
+                            name: twitty.strings.sanFollowers,
+                            title: twitty.strings.sanFollowers,
+                            type: 'numeric',
+                            description: twitty.strings.saFollowersDescription
+                        },
+                        {
                             name: twitty.strings.sanWhat,
                             title: twitty.strings.sanWhat,
                             type: 'categorical',
                             description: twitty.strings.saWhatDescription
                         },
-
+                        {
+                            name: twitty.strings.sanUsername,
+                            title: twitty.strings.sanUsername,
+                            type: 'string',
+                            description: twitty.strings.saWhatDescription
+                        },
+                        {
+                            name: twitty.strings.sanLocation,
+                            title: twitty.strings.sanLocation,
+                            type: 'string',
+                            description: twitty.strings.saLocationDescription
+                        },
+                        {
+                            name: twitty.strings.sanURL,
+                            title: twitty.strings.sanURL,
+                            type: 'string',
+                            description: twitty.strings.saLocationDescription
+                        },
                         {
                             name: `id`,
                             title: "id",

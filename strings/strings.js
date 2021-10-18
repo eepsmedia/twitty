@@ -44,7 +44,16 @@ strings = {
         sanWhat : "what",
         saWhatDescription : "the text of the tweet",
         sanRetweets : "retweets",
-        saRetweetsDescription : "how many retweets",
-    },
+        saRetweetsDescription: "how many retweets",
+        sanFollowers: "followers",
+        saFollowersDescription: "number of followers",
+        sanUsername: "username",
+        saUsernameDescription: "twitter username",
+        sanLocation: "location",
+        saLocationDescription: "location of tweet",
+        sanURL: "url",
+        saURLDescription: "URL of tweet"
+
+    }
 
 }
