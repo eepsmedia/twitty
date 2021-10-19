@@ -56,28 +56,24 @@ concord codap, twitty from codap.xyz:
 <h2>twitty</h2>
 <p>A CODAP plugin for getting tweets for analysis</p>
 
-<label for="startDateInput" id="startDateInputLabel">start: </label>
-<input type="date" id="startDateInput"
+<label for="startDateInput" id="startDateInputLabel">from: </label>
+<input type="date" id="startDateInput" class="dateControl"
 min="2020-03-01" max="2021-04-30" value="2020-05-01">
-<br>
-<br>
-
-<label for="endDateInput" id="endDateInputLabel">end: </label>
-<input type="date" id="endDateInput"
+<label for="endDateInput" id="endDateInputLabel">to: </label>
+<input type="date" id="endDateInput"  class="dateControl"
        min="2020-03-01" max="2021-04-30" value="2020-05-08">
 
-<button id="actionButton" onclick="twitty.handleActionButton()">action!</button>
-<button id="emitButton" onclick="twitty.handleEmitButton()">emit data!</button>
 <br>
 <br>
-<label for="wordfilter" id="wordfilterlabel">Key Word:</label>
+<label for="wordFilter" id="wordFilterLabel">foo:</label>
 
-<input type="text" id="wordfilter" name="name" required
+<input type="text" id="wordFilter" name="name" required
        minlength="1" maxlength="100" size="15">
-<button id="actionButton" onclick="twitty.handleActionButton()">Search!</button>
+<button id="actionButton" onclick="twitty.handleActionButton()">search!</button>
+<button id="emitButton" onclick="twitty.handleEmitButton()">emit data!</button>
 
 <div id="foundTweetList"></div>
-<textarea id="selectedTweet"></textarea>
+<div class="displayedTweetText" id="selectedTweet"></div>
 <div id="selectedTweetInfo"></div>
 
 </body>

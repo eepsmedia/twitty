@@ -34,11 +34,16 @@ h2 {
     padding-left: 0.5em;
 }
 
-textarea {
+.displayedTweetText {
     width: 20em;
-    height : 20em;
     background-color: lightblue;
-    margin-top: 1em;
+    padding : 0.5em;
+    margin: 1em;
+    font-family: Verdana, sans-serif;
+}
+
+.dateControl {
+    width : 10em;
 }
 
 ul {

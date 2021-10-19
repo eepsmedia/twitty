@@ -33,7 +33,7 @@ class Tweet {
         this.what = iTweet.content;
         this.who = iTweet.user.displayname;
         this.likes = iTweet.likeCount;
-        this.id = iTweet.id;
+        this.id = iTweet.id;        //  internal twitter ID
         this.lang = iTweet.lang;
         this.retweets = iTweet.retweetCount;
         this.followers = iTweet.user.followersCount;

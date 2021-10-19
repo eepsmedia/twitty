@@ -28,7 +28,8 @@ strings = {
         staticStrings : {
             startDateInputLabel : `start:`,
             endDateInputLabel : `end:`,
-            actionButton : `action!`,
+            wordFilterLabel : `keyword:`,
+            actionButton : `get tweets!`,
             emitButton : `emit!`,
         },
 
