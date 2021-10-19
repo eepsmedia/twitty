@@ -52,41 +52,78 @@ codapConnect = {
                 break;
         }
     },
-    
-    emitTweets: function (iTweets) {
+
+    /**
+     *
+     * @param iTweets
+     */
+    emitTweets: async function (iTweets) {
         let theValues = [];
+        let duplicates = 0;
+        const currentCaseIDs = await this.getCurrentCaseIDs();
 
         iTweets.forEach( (t) => {
-            const aValue = {
-                id : t.id,
-                what : t.what,
-                when : t.when,
-                likes : Number(t.likes),
-                retweets: Number(t.retweets),
-                followers: Number(t.followers),
-                username: t.username,
-                location: t.where,
-                url : t.url
+            if (currentCaseIDs.includes(t.id)) {
+                duplicates++;
+            } else {
+                const aValue = {
+                    id: t.id,
+                    what: t.what,
+                    when: t.when,
+                    likes: Number(t.likes),
+                    retweets: Number(t.retweets),
+                    followers: Number(t.followers),
+                    username: t.username,
+                    location: t.where,
+                    url: t.url
+                }
+                theValues.push(aValue);
             }
-            theValues.push(aValue);
         });
 
-        console.log(`emitting tweets`);
-        pluginHelper.createItems(
-            theValues,
-            twitty.constants.kTweetsDatasetName,
-        );
+        console.log(`emitting ${theValues.length} tweet(s), avoided emitting ${duplicates} duplicate(s).`)
 
-        //  make sure the table appears
+        if (theValues.length > 0 ) {
+            pluginHelper.createItems(
+                theValues,
+                twitty.constants.kTweetsDatasetName,
+            );
 
-        codapInterface.sendRequest({
-            "action": "create",
-            "resource": "component",
-            "values": {
-                "type": "caseTable",
-                "dataContext": twitty.constants.kTweetsDatasetName,
-            }
-        })
+            //  make sure the table appears
+
+            codapInterface.sendRequest({
+                "action": "create",
+                "resource": "component",
+                "values": {
+                    "type": "caseTable",
+                    "dataContext": twitty.constants.kTweetsDatasetName,
+                }
+            })
+        }
+    },
+
+    /**
+     * Go to CODAP to get an array contianing all the `id` fields, that is, the Twitter ids, in the data.
+     * This is so we can check for duplicates.
+     * @returns {Promise<*[]>}
+     */
+    getCurrentCaseIDs : async function() {
+        let out = [];
+
+        const tMessage = {
+            action : "get",
+            resource : `dataContext[${twitty.constants.kTweetsDatasetName}].itemSearch[*]`,
+        }
+
+        const tResult = await codapInterface.sendRequest(tMessage);
+        if (tResult.success) {
+            tResult.values.forEach( (v) => {
+                out.push(v.values.id)
+            })
+        } else {
+            console.log(`problem retrieving codap tweet items`);
+        }
+        return out;
     },
 
     allowReorg: async function () {
