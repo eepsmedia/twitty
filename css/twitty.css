@@ -26,6 +26,13 @@ limitations under the License.
 
 */
 
+body {
+    font-family: "Sirin Stencil",sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin : 12px;
+}
+
 h2 {
     font-family: Verdana,sans-serif;
     font-weight: bold;
@@ -35,11 +42,12 @@ h2 {
 }
 
 .displayedTweetText {
-    width: 20em;
+    width: 80vw;
     background-color: lightblue;
     padding : 0.5em;
     margin: 1em;
-    font-family: Verdana, sans-serif;
+    font-family: "Sirin Stencil",sans-serif;
+    /* font-family: Verdana,sans-serif; */
 }
 
 .dateControl {

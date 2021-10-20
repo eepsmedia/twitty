@@ -31,6 +31,7 @@ strings = {
             wordFilterLabel : `keyword:`,
             actionButton : `get tweets!`,
             emitButton : `emit!`,
+            subtitle : `A CODAP plugin for getting tweets for analysis`,
         },
 
         sTweetsDatasetTitle : "Tweets",

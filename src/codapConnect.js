@@ -40,7 +40,7 @@ codapConnect = {
         console.log(`handling dataset change`);
         switch (iMessage.values.operation) {
             case "selectCases":
-                //  we have selected tweetys in CODAP, highlight them in twitty
+                //  we have selected tweets in CODAP, highlight them in twitty
                 let theTweetIDs = [];
                 iMessage.values.result.cases.forEach( c => {
                     theTweetIDs.push(c.values.id);
