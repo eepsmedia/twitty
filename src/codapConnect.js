@@ -70,12 +70,13 @@ codapConnect = {
                     id: t.id,
                     what: t.what,
                     when: t.when,
-                    likes: Number(t.likes),
                     retweets: Number(t.retweets),
                     followers: Number(t.followers),
                     username: t.username,
                     location: t.where,
-                    url: t.url
+                    url: t.url,
+                    favourites: Number(t.favourites),
+                    source: t.source
                 }
                 theValues.push(aValue);
             }
@@ -161,12 +162,6 @@ codapConnect = {
                             description: twitty.strings.saWhenDescription
                         },
                         {
-                            name: twitty.strings.sanLikes,
-                            title: twitty.strings.sanLikes,
-                            type: 'numeric',
-                            description: twitty.strings.saLikesDescription
-                        },
-                        {
                             name: twitty.strings.sanRetweets,
                             title: twitty.strings.sanRetweets,
                             type: 'numeric',
@@ -179,10 +174,22 @@ codapConnect = {
                             description: twitty.strings.saFollowersDescription
                         },
                         {
+                            name: twitty.strings.sanFavourites,
+                            title: twitty.strings.sanFavourites,
+                            type: 'numeric',
+                            description: twitty.strings.saFavouritesDescription
+                        },
+                        {
                             name: twitty.strings.sanWhat,
                             title: twitty.strings.sanWhat,
                             type: 'categorical',
                             description: twitty.strings.saWhatDescription
+                        },
+                        {
+                            name: twitty.strings.sanSource,
+                            title: twitty.strings.sanSource,
+                            type: 'string',
+                            description: twitty.strings.saSourceDescription
                         },
                         {
                             name: twitty.strings.sanUsername,

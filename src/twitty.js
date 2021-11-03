@@ -120,8 +120,9 @@ const twitty = {
 <strong>When:</strong> ${theTweet.when.toISOString().slice(0, 10)}
 <strong>Location:</strong> ${tWhere}
 <strong>Retweet count:</strong> ${theTweet.retweets}
-<strong>Like count:</strong> ${theTweet.likes}
+<strong>Favourites count:</strong> ${theTweet.favourites}
 <strong>Follower count:</strong> ${theTweet.followers}
+<strong>Source:</strong> ${theTweet.source}
 <strong>URL:</strong> ${theTweet.url}`;
 
             document.getElementById("selectedTweetInfo").innerHTML = theInfo;

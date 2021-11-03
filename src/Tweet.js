@@ -38,7 +38,9 @@ class Tweet {
         this.retweets = iTweet.retweetCount;
         this.followers = iTweet.user.followersCount;
         this.username = iTweet.user.username;
-        this.url = iTweet.url
+        this.url = iTweet.url;
+        this.favourites = iTweet.user.favouritesCount;
+        this.source = iTweet.sourceLabel;
     };
 
     toString() {

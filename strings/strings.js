@@ -54,7 +54,11 @@ strings = {
         sanLocation: "location",
         saLocationDescription: "location of tweet",
         sanURL: "url",
-        saURLDescription: "URL of tweet"
+        saURLDescription: "URL of tweet",
+        sanFavourites: "favourites",
+        saFavouritesDescription: "number of favourites",
+        sanSource: "source",
+        saSourceDescription: "source of tweet"
 
     }
 
